@@ -63,7 +63,7 @@ The directory structure of your new project looks like this:
 ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
 │                         generated with `pip freeze > requirements.txt`
 │
-├── src                <- Source code for use in this project.
+├── package-name       <- Source code for use in this project.
 │   ├── __init__.py    <- Makes src a Python module
 │   │
 │   ├── data           <- Scripts to download or generate data

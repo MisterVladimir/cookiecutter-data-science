@@ -14,15 +14,18 @@ args = {
         }
 
 
-def system_check(basename):
-    platform = sys.platform
-    if 'linux' in platform:
-        basename = basename.lower()
-    return basename
+@pytest.fixture(scope="session")
+def system_check():
+    def _system_check(basename):
+        platform = sys.platform
+        if 'linux' in platform:
+            basename = basename.lower()
+        return basename
+    return _system_check
 
 
 @pytest.fixture(scope='class', params=[{}, args])
-def default_baked_project(tmpdir_factory, request):
+def default_baked_project(tmpdir_factory, request, system_check):
     temp = tmpdir_factory.mktemp('data-project')
     out_dir = Path(temp).resolve()
 

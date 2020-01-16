@@ -26,7 +26,7 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
-	python3 src/data/make_dataset.py data/raw data/processed
+	python3 {{ cookiecutter.package_name }}/data/make_dataset.py data/raw data/processed
 
 ## Delete all compiled Python files
 clean:
@@ -35,7 +35,7 @@ clean:
 
 ## Lint using flake8
 lint:
-	flake8 src
+	flake8 {{ cookiecutter.package_name }}
 
 ## Upload Data to S3
 sync_data_to_s3:
@@ -62,7 +62,7 @@ ifeq (True,$(HAS_CONDA))
 else
 	@echo ">>> Installing virtual environment using `venv`."
 	python3 -m venv .venv
-	@echo ">>> New virtualenv created. Activate with:\nworkon $(PROJECT_NAME)"
+	@echo ">>> New virtualenv created. Activate with:\n . .venv/bin/activate"
 endif
 
 

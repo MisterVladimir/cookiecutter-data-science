@@ -54,7 +54,7 @@ Disagree with a couple of the default folder names? Working on a project that's 
 
 ## Getting started
 
-With this in mind, we've created a data science cookiecutter template for projects in Python. Your analysis doesn't have to be in Python, but the template does provide some Python boilerplate that you'd want to remove (in the `src` folder for example, and the Sphinx documentation skeleton in `docs`).
+With this in mind, we've created a data science cookiecutter template for projects in Python. Your analysis doesn't have to be in Python, but the template does provide some Python boilerplate that you'd want to remove (in the `{{ cookiecutter.package_name }}` folder for example, and the Sphinx documentation skeleton in `docs`).
 
 ### Requirements
 
@@ -195,7 +195,7 @@ OTHER_VARIABLE=something
 If you look at the stub script in `src/data/make_dataset.py`, it uses a package called [python-dotenv](https://github.com/theskumar/python-dotenv) to load up all the entries in this file as environment variables so they are accessible with `os.environ.get`. Here's an example snippet adapted from the `python-dotenv` documentation:
 
 ```python
-# src/data/dotenv_example.py
+# {{ cookiecutter.package_name }}/data/dotenv_example.py
 import os
 from dotenv import load_dotenv, find_dotenv
 

@@ -1,7 +1,6 @@
 import os
 import pytest
 from subprocess import check_output
-from conftest import system_check
 
 
 def no_curlies(filepath):
@@ -24,7 +23,7 @@ def no_curlies(filepath):
 
 @pytest.mark.usefixtures("default_baked_project")
 class TestCookieSetup(object):
-    def test_project_name(self):
+    def test_project_name(self, system_check):
         project = self.path
         if pytest.param.get('project_name'):
             name = system_check('DrivenData')
