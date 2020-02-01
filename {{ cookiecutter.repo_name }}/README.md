@@ -31,8 +31,8 @@ Project Organization
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
     │
-    ├── setup.py                            <- makes project pip installable (pip install -e .) so {{ cookiecutter.package_name }} can be imported
-    ├── {{ cookiecutter.package_name }}     <- Source code for use in this project.
+    ├── setup.py                            <- makes project pip-installable (pip install -e .) so the `{{ cookiecutter.package_name }}` package can be imported
+    ├── {{ "{:<35} ".format(cookiecutter.package_name) }}<- Source code for the project.
     │   ├── __init__.py                     <- Makes {{ cookiecutter.package_name }} a Python module
     │   │
     │   ├── data                            <- Scripts to download or generate data
