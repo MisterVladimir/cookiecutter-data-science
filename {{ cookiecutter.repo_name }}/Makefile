@@ -60,7 +60,7 @@ ifeq (True,$(HAS_CONDA))
 	conda create --name $(PROJECT_NAME) python=3
 	@echo ">>> New conda env created. Activate with:\nsource activate $(PROJECT_NAME)"
 else
-	@echo ">>> Installing virtual environment using `venv`."
+	@echo ">>> Installing virtual environment using venv."
 	python3 -m venv .venv
 	@echo ">>> New virtualenv created. Activate with:\n . .venv/bin/activate"
 endif
