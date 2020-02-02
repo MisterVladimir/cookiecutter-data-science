@@ -3,9 +3,8 @@
 
 ### Cached files
 *.pytest_cache
-**/__pycache__
+*__pycache__
 
 # Docker
 dockerfiles
 docker-compose.yaml
-testing-framework
