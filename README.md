@@ -63,9 +63,9 @@ The directory structure of your new project looks like this:
 ├── requirements.txt                    <- The requirements file for reproducing the analysis environment, e.g.
 │                                          generated with `pip freeze > requirements.txt`
 │
-├── setup.py                            <- makes project pip-installable (pip install -e .) so the `{{ cookiecutter.package_name }}` package can be imported
-├── {{ "{:<35} ".format(cookiecutter.package_name) }}<- Source code for the project.
-│   ├── __init__.py                     <- Makes {{ cookiecutter.package_name }} a Python module
+├── setup.py                            <- makes project pip-installable (pip install -e .) so the `{{ cookiecutter.project_slug }}` package can be imported
+├── name_of_package                     <- Source code for the project.
+│   ├── __init__.py                     <- Makes {{ cookiecutter.project_slug }} a Python module
 │   │
 │   ├── data                            <- Scripts to download or generate data
 │   │   └── make_dataset.py
@@ -91,6 +91,8 @@ We welcome contributions! [See the docs for guidelines](https://drivendata.githu
 ### Installing development requirements
 ------------
 
+    python3 -m venv .venv
+    . ./.venv/bin/activate
     pip install -r requirements.txt
 
 ### Running the tests

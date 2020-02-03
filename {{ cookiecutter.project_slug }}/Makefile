@@ -7,35 +7,35 @@
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BUCKET = {{ cookiecutter.s3_bucket }}
 PROFILE = {{ cookiecutter.aws_profile }}
-PROJECT_NAME = {{ cookiecutter.repo_name }}
-
-ifeq (,$(shell which conda))
-	HAS_CONDA=False
-else
-	HAS_CONDA=True
-endif
 
 #################################################################################
 # COMMANDS                                                                      #
 #################################################################################
 
 ## Install Python Dependencies
-requirements: test_environment
-	python3 -m pip install -U pip setuptools wheel
-	python3 -m pip install -r requirements.txt
+requirements:
+	.venv/bin/python -m pip install -U pip setuptools wheel
+	.venv/bin/python -m pip install -r requirements.txt
 
 ## Make Dataset
 data: requirements
-	python3 {{ cookiecutter.package_name }}/data/make_dataset.py data/raw data/processed
+	.venv/bin/python -m {{ cookiecutter.project_slug }}.data.make_dataset ${PWD}/data/raw ${PWD}/data/processed
 
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
-## Lint using flake8
+## Lint using `black` and `pylint`
+## Note that `pylint` is only used to check a few key items that `black` cannot.
 lint:
-	flake8 {{ cookiecutter.package_name }}
+	.venv/bin/python -m pytest {{ cookiecutter.project_slug }} test
+	# `mccabe` extension checks for code complexity.
+	.venv/bin/python -m pylint \
+		--load-plugins=pylint.extensions.mccabe \
+		--disable=all \
+		--enable=empty-docstring,missing-docstring,print-statement \
+		{{ cookiecutter.project_slug }} test
 
 ## Upload Data to S3
 sync_data_to_s3:
@@ -53,22 +53,22 @@ else
 	aws s3 sync s3://$(BUCKET)/data/ data/ --profile $(PROFILE)
 endif
 
-## Set up python interpreter environment
+## Set up python interpreter environment and install dev dependencies
 create_environment:
-ifeq (True,$(HAS_CONDA))
-	@echo ">>> Detected conda, creating conda environment."
-	conda create --name $(PROJECT_NAME) python=3
-	@echo ">>> New conda env created. Activate with:\nsource activate $(PROJECT_NAME)"
-else
 	@echo ">>> Installing virtual environment using venv."
 	python3 -m venv .venv
-	@echo ">>> New virtualenv created. Activate with:\n . .venv/bin/activate"
-endif
+	@echo ">>> Installed! Now installing dependencies..."
+	.venv/bin/python -m pip install -q --upgrade \
+		pip \
+		awscli \
+		black \
+		pylint \
+		pytest \
+		pytest-black \
+		pytest-runner \
+		Sphinx
+	@echo ">>> Installed! Activate it by executing \n>>> . .venv/bin/activate"
 
-
-## Test python environment is setup correctly
-test_environment:
-	python3 test_environment.py
 
 #################################################################################
 # PROJECT RULES                                                                 #

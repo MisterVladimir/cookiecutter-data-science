@@ -5,6 +5,6 @@
 *.pytest_cache
 *__pycache__
 
-# Docker
-dockerfiles
+### Docker files.
+**/Dockerfile*
 docker-compose.yaml

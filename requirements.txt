@@ -1,6 +1,0 @@
-mkdocs
-mkdocs-cinder
-cookiecutter
-pytest
-black
-attrs

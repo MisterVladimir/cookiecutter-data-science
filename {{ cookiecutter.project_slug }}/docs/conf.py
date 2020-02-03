@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# {{ cookiecutter.project_name }} documentation build configuration file, created by
+# {{ cookiecutter.project_slug }} documentation build configuration file, created by
 # sphinx-quickstart.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -41,7 +41,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "{{ cookiecutter.project_name }}"
+project = "{{ cookiecutter.project_slug }}"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -164,7 +164,7 @@ html_static_path = ["_static"]
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "{{ cookiecutter.repo_name }}doc"
+htmlhelp_basename = "{{ cookiecutter.project_slug }}doc"
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,8 +183,8 @@ latex_elements = {
 latex_documents = [
     (
         "index",
-        "{{ cookiecutter.repo_name }}.tex",
-        "{{ cookiecutter.project_name }} Documentation",
+        "{{ cookiecutter.project_slug }}.tex",
+        "{{ cookiecutter.project_slug }} Documentation",
         "{{ cookiecutter.author_name }}",
         "manual",
     ),
@@ -218,8 +218,8 @@ latex_documents = [
 man_pages = [
     (
         "index",
-        "{{ cookiecutter.repo_name }}",
-        "{{ cookiecutter.project_name }} Documentation",
+        "{{ cookiecutter.project_slug }}",
+        "{{ cookiecutter.project_slug }} Documentation",
         ["{{ cookiecutter.author_name }}"],
         1,
     )
@@ -237,10 +237,10 @@ man_pages = [
 texinfo_documents = [
     (
         "index",
-        "{{ cookiecutter.repo_name }}",
-        "{{ cookiecutter.project_name }} Documentation",
+        "{{ cookiecutter.project_slug }}",
+        "{{ cookiecutter.project_slug }} Documentation",
         "{{ cookiecutter.author_name }}",
-        "{{ cookiecutter.project_name }}",
+        "{{ cookiecutter.project_slug }}",
         "{{ cookiecutter.description }}",
         "Miscellaneous",
     ),

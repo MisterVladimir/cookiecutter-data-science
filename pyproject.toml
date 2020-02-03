@@ -2,4 +2,4 @@
 line-length = 88
 target-version = ['py37']
 include = '\.pyi?$'
-exclude = '(\.eggs|\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|_build|buck-out|build|dist|{{ cookiecutter.repo_name }}/setup.py)'
+exclude = '(\.eggs|\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|_build|buck-out|build|dist|{{ cookiecutter.project_slug }}/setup.py)'

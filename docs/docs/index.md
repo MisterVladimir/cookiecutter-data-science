@@ -60,7 +60,7 @@ Or, as PEP 8 put it:
 
 With this in mind, we've created a data science cookiecutter template for projects in Python. Your analysis
 doesn't have to be in Python, but the template does provide some Python boilerplate that you'd want to
-remove (in the `{{ cookiecutter.package_name }}` folder for example, and the Sphinx documentation skeleton in `docs`).
+remove (in the `{{ cookiecutter.project_slug }}` folder for example, and the Sphinx documentation skeleton in `docs`).
 
 ### Requirements
 
@@ -110,8 +110,8 @@ cookiecutter https://github.com/drivendata/cookiecutter-data-science
 │                         generated with `pip freeze > requirements.txt`
 │
 ├── setup.py                            <- Make this project pip installable with `pip install -e`
-├── {{ cookiecutter.package_name }}     <- Source code for use in this project.
-│   ├── __init__.py                     <- Makes {{ cookiecutter.package_name }} a Python module
+├── {{ cookiecutter.project_slug }}     <- Source code for use in this project.
+│   ├── __init__.py                     <- Makes {{ cookiecutter.project_slug }} a Python module
 │   │
 │   ├── data                            <- Scripts to download or generate data
 │   │   └── make_dataset.py
@@ -143,7 +143,7 @@ Don't ever edit your raw data, especially not manually, and especially not in Ex
 raw data. Don't save multiple versions of the raw data. Treat the data (and its format) as immutable. The code
 you write should move the raw data through a pipeline to your final analysis. You shouldn't have to run all of
 the steps every time you want to make a new figure (see [Analysis is a DAG](#analysis-is-a-dag)), but anyone
-should be able to reproduce the final products with only the code in `{{ cookiecutter.package_name }}` and
+should be able to reproduce the final products with only the code in `{{ cookiecutter.project_slug }}` and
 the data in `data/raw`.
 
 Also, if data is immutable, it doesn't need source control in the same way that code does. Therefore,
@@ -173,8 +173,8 @@ on Jupyter notebooks. There are two steps we recommend for using notebooks effec
  format `<step>-<ghuser>-<description>.ipynb` (e.g., `0.3-bull-visualize-distributions.ipynb`).
 
  2. Refactor the good parts. Don't write code to do the same task in multiple notebooks. If it's a data
- preprocessing task, put it in the pipeline at `{{ cookiecutter.package_name }}/data/make_dataset.py` and
- load data from `data/interim`. If it's useful utility code, refactor it to `{{ cookiecutter.package_name }}`.
+ preprocessing task, put it in the pipeline at `{{ cookiecutter.project_slug }}/data/make_dataset.py` and
+ load data from `data/interim`. If it's useful utility code, refactor it to `{{ cookiecutter.project_slug }}`.
 
  Now by default we turn the project into a Python package (see the `setup.py` file). You can import your
  code and use it in notebooks with a cell like the following:
@@ -183,10 +183,10 @@ on Jupyter notebooks. There are two steps we recommend for using notebooks effec
 # OPTIONAL: Load the "autoreload" extension so that code can change
 %load_ext autoreload
 
-# OPTIONAL: always reload modules so that as you change code in {{ cookiecutter.package_name }}, it gets loaded
+# OPTIONAL: always reload modules so that as you change code in {{ cookiecutter.project_slug }}, it gets loaded
 %autoreload 2
 
-from {{ cookiecutter.package_name }}.data import make_dataset
+from {{ cookiecutter.project_slug }}.data import make_dataset
 ```
 
 ### Analysis is a DAG
@@ -252,13 +252,13 @@ OTHER_VARIABLE=something
 
 #### Use a package to load these variables automatically.
 
-If you look at the stub script in `{{ cookiecutter.package_name }}/data/make_dataset.py`, it uses a
+If you look at the stub script in `{{ cookiecutter.project_slug }}/data/make_dataset.py`, it uses a
 package called [python-dotenv](https://github.com/theskumar/python-dotenv) to load up all the entries
 in this file as environment variables so they are accessible with `os.environ.get`. Here's an example
 snippet adapted from the `python-dotenv` documentation:
 
 ```python
-# {{ cookiecutter.package_name }}/data/dotenv_example.py
+# {{ cookiecutter.project_slug }}/data/dotenv_example.py
 import os
 from dotenv import load_dotenv, find_dotenv
 
