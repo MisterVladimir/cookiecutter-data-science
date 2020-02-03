@@ -91,6 +91,8 @@ We welcome contributions! [See the docs for guidelines](https://drivendata.githu
 ### Installing development requirements
 ------------
 
+    python3 -m venv .venv
+    . ./.venv/bin/activate
     pip install -r requirements.txt
 
 ### Running the tests
