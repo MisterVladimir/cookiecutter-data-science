@@ -99,7 +99,7 @@ We welcome contributions! [See the docs for guidelines](https://drivendata.githu
 **Natively**
 
 ```bash
-py.test tests
+pytest
 ```
 
 **Docker**
