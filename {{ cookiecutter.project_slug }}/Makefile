@@ -19,7 +19,7 @@ requirements:
 
 ## Make Dataset
 data: requirements
-	.venv/bin/python -m {{ cookiecutter.project_slug }}.data.make_dataset ${PWD}/data/raw ${PWD}/data/processed
+	.venv/bin/python -m {{ cookiecutter.project_slug }}.data.main ${PWD}/data/raw ${PWD}/data/processed
 
 ## Delete all compiled Python files
 clean:
