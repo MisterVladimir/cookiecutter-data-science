@@ -49,13 +49,7 @@ def _get_extra_gitignore_text() -> str:
     """
     Return the text to append to the `.gitignore` file.
     """
-    return """
-    # Data to exclude from version control.
-    data/
-    
-    # Models produced by training.
-    models/
-    """
+    return "\n\n# Data excluded from version control.\ndata/\n\n# Models produced by training.\nmodels/\n"
 
 
 def main():
@@ -84,7 +78,7 @@ def main():
             sys.exit(1)
 
     # Add data and raw model files to .gitignore
-    with open(".gitignore", "w") as fp:
+    with open(".gitignore", "a") as fp:
         fp.write(_get_extra_gitignore_text())
 
 
