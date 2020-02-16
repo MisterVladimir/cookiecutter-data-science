@@ -82,5 +82,5 @@ def main():
         fp.write(_get_extra_gitignore_text())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
