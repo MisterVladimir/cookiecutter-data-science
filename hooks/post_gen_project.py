@@ -45,13 +45,6 @@ def _is_python_path_valid(name: str) -> bool:
     return bool(valid_module_re.match(name))
 
 
-def _get_extra_gitignore_text() -> str:
-    """
-    Return the text to append to the `.gitignore` file.
-    """
-    return "\n\n# Data excluded from version control.\ndata/\n\n# Models produced by training.\nmodels/\n"
-
-
 def main():
     """Body of the pot-gen script."""
     project_root = pathlib.Path(".")
@@ -76,10 +69,6 @@ def main():
         if _contains_curly_braces(file_contents):
             print(f"Jinja template was not correctly filled in {file.resolve()}")
             sys.exit(1)
-
-    # Add data and raw model files to .gitignore
-    with open(".gitignore", "a") as fp:
-        fp.write(_get_extra_gitignore_text())
 
 
 if __name__ == "__main__":

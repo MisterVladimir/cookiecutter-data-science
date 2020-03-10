@@ -8,7 +8,7 @@ The inspiration for this cookiecutter came from [drivendata](http://drivendata.g
 ### Requirements to use the cookiecutter template:
 -----------
  - Python 3.6+
- - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0: This can be installed with pip by or conda depending on how you manage your Python packages:
+ - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0
 
 ``` bash
 $ pip install cookiecutter
@@ -35,7 +35,7 @@ The directory structure of your new project looks like this:
 │   ├── __init__.py
 │   ├── data                            <- Scripts to download or process data
 │   │   ├── __init__.py
-│   │   └── main.py                     <- Command line interface (CLI) to download and process the data.
+│   │   └── main.py                     <- Command line interface (CLI) to download and process the data
 │   ├── features                        <- Scripts to turn the data into features for modeling
 │   │   ├── __init__.py                    
 │   │   └── build.py
@@ -43,7 +43,7 @@ The directory structure of your new project looks like this:
 │   │   ├── __init__.py
 │   │   ├── predict.py
 │   │   └── train.py
-│   └── visualization                   <- Utilities for visualizing the results.
+│   └── visualization                   <- Utilities for visualizing the results
 │       ├── __init__.py
 │       └── visualize.py
 ├── data                                <- Data used for training, testing and evaluation. By default the contents

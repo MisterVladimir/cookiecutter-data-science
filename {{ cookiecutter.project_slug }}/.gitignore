@@ -87,3 +87,11 @@ target/
 
 # Python virtual environment
 .venv
+
+# Data excluded from version control.
+data
+!{{ cookiecutter.project_slug }}/data
+
+# Models produced by training.
+models/
+!{{ cookiecutter.project_slug }}/models

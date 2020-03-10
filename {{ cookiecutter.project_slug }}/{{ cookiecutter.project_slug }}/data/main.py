@@ -10,21 +10,19 @@ def _get_cli_arg_parser() -> argparse.ArgumentParser:
     """Return a CLI argument parser."""
     parser = argparse.ArgumentParser(description="Clean the raw data.")
     parser.add_argument(
-        "input-directory",
-        "i",
+        "input_directory",
         help="Directory containing the raw data to be processed.",
         type=pathlib.Path,
     )
     parser.add_argument(
-        "output-directory",
-        "o",
+        "output_directory",
         help="Directory to write the processed data to.",
         type=pathlib.Path,
     )
     return parser
 
 
-def _process_cli_args(args: argparse.Namespace) -> None:
+def _check_cli_args(args: argparse.Namespace) -> None:
     """
     Process the CLI arguments.
 
@@ -49,10 +47,10 @@ def main(argv) -> None:
     parser = _get_cli_arg_parser()
     args = parser.parse_args(argv)
 
-    _process_cli_args(args)
+    _check_cli_args(args)
 
     # Your code goes here.
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main(sys.argv[1:])

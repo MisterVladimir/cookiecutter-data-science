@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
-""" """
+"""
+`invoke` tasks.py workaround. Copied from
+https://github.com/pyinvoke/invoke/issues/357#issuecomment-583851322
+"""
 from unittest.mock import patch
 from inspect import getfullargspec, ArgSpec
 
@@ -9,8 +12,8 @@ import invoke
 
 def fix_annotations():
     """
-        Pyinvoke doesnt accept annotations by default, this fix that
-        Based on: https://github.com/pyinvoke/invoke/pull/606
+    Pyinvoke doesnt accept annotations by default, this fix that
+    Based on: https://github.com/pyinvoke/invoke/pull/606
     """
 
     def patched_inspect_getargspec(func):

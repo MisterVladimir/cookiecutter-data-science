@@ -1,0 +1,3 @@
+omit =
+    # Not covered because it's copied from an outside source.
+    monkeypatch.com
