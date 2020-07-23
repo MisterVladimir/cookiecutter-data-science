@@ -88,11 +88,13 @@ def lint(ctx):
 
 
 @task()
-def test(ctx):
+def test(ctx, report=True):
     """Run tests."""
     pty = platform.system() == "Linux"
     inifile = ROOT_DIR.joinpath("pytest.ini").resolve()
-    ctx.run(f"{PYTEST} --c {inifile}", pty=pty)
+    ctx.run(f"{PYTEST} -c {inifile}", pty=pty)
+    if report:
+        ctx.run(f"coverage html --show-contexts", pty=pty)
 
 
 @task()
@@ -167,14 +169,14 @@ def tag(ctx, version) -> None:
     ctx.run(f'git tag v{_version} -m "v{_version}"')
 
 
-@task(pre=[clean, ])
+@task(pre=[clean])
 def dist(ctx):
     """Build source and wheel packages."""
     ctx.run(f"{PYTHON} {SETUP_FILE} sdist")
     ctx.run(f"{PYTHON} {SETUP_FILE} bdist_wheel")
 
 
-@task(pre=[clean, dist, ])
+@task(pre=[clean, dist])
 def release(ctx):
     """Release the package to PyPi."""
     ctx.run(f"{TWINE} upload dist/*")

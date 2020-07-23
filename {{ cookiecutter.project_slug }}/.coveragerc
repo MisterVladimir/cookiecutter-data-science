@@ -1,3 +1,6 @@
+[run]
 omit =
     # Not covered because it's copied from an outside source.
-    monkeypatch.com
+    {{ cookiecutter.project_slug }}/monkeypatch.py
+    # Driver script.
+    {{ cookiecutter.project_slug }}/data/main.py
